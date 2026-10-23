@@ -76,9 +76,15 @@ const DEFAULT_BACKEND_USER: UserBackendDTO = {
 };
 
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => authService.isAuthenticated());
+
   const [currentScreen, setCurrentScreen] = useState<ScreenId>(() => {
+    const isAuth = authService.isAuthenticated();
     const hash = window.location.hash.replace('#', '') as ScreenId;
-    return VALID_SCREENS.includes(hash) ? hash : 'landing';
+    if (isAuth && (hash === 'landing' || hash === 'login' || hash === 'cadastro' || !hash)) {
+      return 'trilha';
+    }
+    return VALID_SCREENS.includes(hash) ? hash : isAuth ? 'trilha' : 'landing';
   });
 
   const [rawUser, setRawUser] = useState<UserBackendDTO>(() => {
@@ -90,12 +96,15 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [nodes, setNodes] = useState<Record<string, NoTrilhaDTO>>(INITIAL_TRAIL_NODES);
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [isBackendConnected, setIsBackendConnected] = useState<boolean>(false);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => authService.isAuthenticated());
   const [pendingXp, setPendingXp] = useState<number>(0);
 
   // Sincroniza hash na URL
   const navigateTo = (screen: ScreenId) => {
     audioSystem.playClick();
+    // Se o usuário já está autenticado, não faz sentido ir para login, cadastro ou landing
+    if (authService.isAuthenticated() && (screen === 'landing' || screen === 'login' || screen === 'cadastro')) {
+      screen = 'trilha';
+    }
     setCurrentScreen(screen);
     window.location.hash = screen;
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -104,6 +113,14 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '') as ScreenId;
+      const isAuth = authService.isAuthenticated();
+
+      if (isAuth && (hash === 'landing' || hash === 'login' || hash === 'cadastro')) {
+        setCurrentScreen('trilha');
+        window.location.hash = 'trilha';
+        return;
+      }
+
       if (VALID_SCREENS.includes(hash)) {
         setCurrentScreen(hash);
       }

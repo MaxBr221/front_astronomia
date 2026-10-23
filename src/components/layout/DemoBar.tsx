@@ -3,22 +3,28 @@ import { useApp } from '../../context/AppContext';
 import { ScreenId } from '../../types';
 
 export const DemoBar: React.FC = () => {
-  const { currentScreen, navigateTo, isMuted, toggleMute, resetDemoState, isAuthenticated, logout } = useApp();
+  const { currentScreen, navigateTo, isMuted, toggleMute, resetDemoState, isAuthenticated, logout, user } = useApp();
 
-  const screens: { id: ScreenId; label: string }[] = [
-    { id: 'landing', label: '🪐 Início / Landing' },
-    { id: 'trilha', label: '🌌 1. Trilha Celeste' },
-    { id: 'constelacao', label: '🏹 2. Ficha Homem Velho' },
-    { id: 'observatorio', label: '🔭 3. Guia Stellarium' },
-    { id: 'exercicio', label: '✍️ 4. Exercício' },
-    { id: 'login', label: '🔑 Login' },
-    { id: 'cadastro', label: '📝 Cadastro' }
-  ];
+  // Se o explorador já estiver logado, não exibe Início/Landing, Login nem Cadastro
+  const screens: { id: ScreenId; label: string }[] = isAuthenticated
+    ? [
+        { id: 'trilha', label: '🌌 Trilha Celeste' },
+        { id: 'constelacao', label: '🏹 Ficha Homem Velho' },
+        { id: 'observatorio', label: '🔭 Guia Stellarium' },
+        { id: 'exercicio', label: '✍️ Exercício' }
+      ]
+    : [
+        { id: 'landing', label: '🪐 Início / Landing' },
+        { id: 'trilha', label: '🌌 Trilha Celeste' },
+        { id: 'login', label: '🔑 Entrar' },
+        { id: 'cadastro', label: '📝 Criar Conta' }
+      ];
 
   return (
     <header className="demo-bar">
       <div className="demo-bar-badge">
-        <span className="live-dot" /> React + Spring Boot Ready
+        <span className="live-dot" /> 
+        {isAuthenticated ? `Aldeia Conectada • ${user.name}` : 'Portal Potiguara'}
       </div>
 
       <nav className="demo-nav-pills" id="demo-nav">
@@ -37,9 +43,13 @@ export const DemoBar: React.FC = () => {
         {isAuthenticated && (
           <button
             className="demo-pill"
-            style={{ borderColor: 'var(--accent-rose)', color: 'var(--accent-rose)' }}
+            style={{ 
+              borderColor: 'rgba(244, 63, 94, 0.45)', 
+              color: '#fda4af',
+              background: 'rgba(244, 63, 94, 0.12)' 
+            }}
             onClick={logout}
-            title="Encerrar Sessão"
+            title="Encerrar Sessão e Sair"
           >
             🚪 Sair
           </button>
@@ -56,7 +66,7 @@ export const DemoBar: React.FC = () => {
         <button
           className="btn-icon-soft"
           onClick={resetDemoState}
-          title="Reiniciar Estado do Protótipo"
+          title="Reiniciar Demonstração"
         >
           ↺
         </button>
