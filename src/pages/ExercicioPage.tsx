@@ -367,7 +367,7 @@ export const ExercicioPage: React.FC = () => {
               disabled={isValidating}
               id="btn-verify-exercise"
             >
-              {isValidating ? 'Validando no Spring Boot...' : 'Verificar Conexões Sagradas ➔'}
+              {isValidating ? 'Validando Conexões Sagradas...' : 'Verificar Conexões Sagradas ➔'}
             </button>
           </div>
 

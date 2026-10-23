@@ -91,6 +91,7 @@ export const authService = {
   // Logout local
   logout(): void {
     localStorage.removeItem('potiguara_auth_token');
+    localStorage.removeItem('potiguara_token');
     localStorage.removeItem('potiguara_user');
   },
 
@@ -105,6 +106,10 @@ export const authService = {
   },
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('potiguara_auth_token');
+    return !!(
+      localStorage.getItem('potiguara_auth_token') ||
+      localStorage.getItem('potiguara_token') ||
+      localStorage.getItem('potiguara_user')
+    );
   }
 };

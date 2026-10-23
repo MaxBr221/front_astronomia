@@ -221,7 +221,7 @@ export const LandingPage: React.FC = () => {
 
       {/* Rodapé da Landing Page */}
       <footer className="landing-footer">
-        <p>Projeto Etnoastronomia Indígena Potiguara & Stellarium • Desenvolvido com React, TypeScript e Spring Boot</p>
+        <p>Projeto Etnoastronomia Indígena Potiguara & Stellarium • Saberes Ancestrais e Astronomia Cultural</p>
       </footer>
     </div>
   );

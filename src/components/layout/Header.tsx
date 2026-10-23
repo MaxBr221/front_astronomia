@@ -36,10 +36,10 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Perfil do Usuário e Status do Backend */}
+      {/* Perfil do Usuário e Status da Aldeia */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         <div
-          title={isBackendConnected ? 'Conectado à API Spring Boot' : 'Operando com Mock DTOs'}
+          title={isBackendConnected ? 'Conectado à Trilha Celeste Ancestral' : 'Modo de Exploração Offline'}
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -61,7 +61,7 @@ export const Header: React.FC = () => {
               background: isBackendConnected ? '#10b981' : '#f59e0b'
             }}
           />
-          {isBackendConnected ? 'Spring Boot Online' : 'Front-end Standalone'}
+          {isBackendConnected ? 'Aldeia Conectada' : 'Modo Offline'}
         </div>
 
         <div className="user-profile-badge">

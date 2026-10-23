@@ -11,7 +11,7 @@ import { LoginPage } from './pages/LoginPage';
 import { CadastroPage } from './pages/CadastroPage';
 
 export const App: React.FC = () => {
-  const { currentScreen } = useApp();
+  const { currentScreen, isAuthenticated } = useApp();
 
   const showMainHeader = ['trilha', 'constelacao', 'observatorio', 'exercicio'].includes(currentScreen);
 
@@ -24,13 +24,13 @@ export const App: React.FC = () => {
       {showMainHeader && <Header />}
 
       <main id="screen-container">
-        {currentScreen === 'landing' && <LandingPage />}
+        {currentScreen === 'landing' && (isAuthenticated ? <TrilhaPage /> : <LandingPage />)}
         {currentScreen === 'trilha' && <TrilhaPage />}
         {currentScreen === 'constelacao' && <ConstelacaoPage />}
         {currentScreen === 'observatorio' && <ObservatorioPage />}
         {currentScreen === 'exercicio' && <ExercicioPage />}
-        {currentScreen === 'login' && <LoginPage />}
-        {currentScreen === 'cadastro' && <CadastroPage />}
+        {currentScreen === 'login' && (isAuthenticated ? <TrilhaPage /> : <LoginPage />)}
+        {currentScreen === 'cadastro' && (isAuthenticated ? <TrilhaPage /> : <CadastroPage />)}
       </main>
     </div>
   );

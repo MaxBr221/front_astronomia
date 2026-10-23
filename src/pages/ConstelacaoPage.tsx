@@ -150,7 +150,7 @@ export const ConstelacaoPage: React.FC = () => {
           </span>
           {isUpdating && (
             <span style={{ fontSize: '0.72rem', color: 'var(--accent-gold-light)', fontStyle: 'italic' }}>
-              • Sincronizando com Spring Boot...
+              • Sincronizando com o Firmamento...
             </span>
           )}
         </div>

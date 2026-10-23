@@ -181,6 +181,8 @@ class ApiClient {
 
   logout(): void {
     localStorage.removeItem('potiguara_token');
+    localStorage.removeItem('potiguara_auth_token');
+    localStorage.removeItem('potiguara_user');
   }
 
   getToken(): string | null {

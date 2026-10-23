@@ -14,7 +14,7 @@ export const DemoBar: React.FC = () => {
         { id: 'exercicio', label: '✍️ Exercício' }
       ]
     : [
-        { id: 'landing', label: '🪐 Início / Landing' },
+        { id: 'landing', label: '🪐 Início' },
         { id: 'trilha', label: '🌌 Trilha Celeste' },
         { id: 'login', label: '🔑 Entrar' },
         { id: 'cadastro', label: '📝 Criar Conta' }
@@ -24,7 +24,7 @@ export const DemoBar: React.FC = () => {
     <header className="demo-bar">
       <div className="demo-bar-badge">
         <span className="live-dot" /> 
-        {isAuthenticated ? `Aldeia Conectada • ${user.name}` : 'Portal Potiguara'}
+        {isAuthenticated ? `Aldeia Conectada • ${user.name}` : 'Trilha Celeste Potiguara'}
       </div>
 
       <nav className="demo-nav-pills" id="demo-nav">
