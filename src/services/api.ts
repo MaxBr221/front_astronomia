@@ -7,7 +7,7 @@ export const apiClient: AxiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: 8000,
+  timeout: 2500,
 });
 
 // Interceptor de Requisição: Injetar token JWT

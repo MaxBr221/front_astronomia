@@ -103,12 +103,12 @@ export const FullscreenViewerModal: React.FC<FullscreenViewerModalProps> = ({
               {data.stars.map((s, idx) => (
                 <div
                   key={idx}
-                  className={`star-point ${s.name.includes('Betelgeuse') ? 'orange' : ''}`}
-                  style={{ top: `${s.y}%`, left: `${s.x}%` }}
-                  title={`${s.name} (${s.indigenous}) - Mag: ${s.mag}`}
+                  className={`star-point ${(s?.name || '')?.includes('Betelgeuse') ? 'orange' : ''}`}
+                  style={{ top: `${s?.y ?? 50}%`, left: `${s?.x ?? 50}%` }}
+                  title={`${s?.name || 'Estrela'} (${s?.indigenous || ''}) - Mag: ${s?.mag || ''}`}
                 >
                   <div className="star-dot" />
-                  <div className="star-label">{s.name}</div>
+                  <div className="star-label">{s?.name || ''}</div>
                 </div>
               ))}
             </div>

@@ -6,6 +6,8 @@ import { EXERCICIO_LIGAR_COLUNAS } from '../services/mockDatabase';
 import { audioSystem } from '../utils/audioSystem';
 import { launchCosmicConfetti } from '../utils/confetti';
 
+import { MOCK_EXERCISE_DATA } from '../services/mockBackendData';
+
 interface CableCoord {
   id: string;
   d: string;
@@ -16,8 +18,7 @@ export const ExercicioPage: React.FC = () => {
   const { navigateTo, completeHomemVelho, isAuthenticated, rawUser } = useApp();
   const fallbackData = EXERCICIO_LIGAR_COLUNAS;
 
-  const [exerciseData, setExerciseData] = useState<ExerciseDTO | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [exerciseData, setExerciseData] = useState<ExerciseDTO>(MOCK_EXERCISE_DATA);
   const [isValidating, setIsValidating] = useState<boolean>(false);
 
   const [userMatches, setUserMatches] = useState<Record<string, string>>({});
@@ -41,18 +42,13 @@ export const ExercicioPage: React.FC = () => {
   useEffect(() => {
     let isMounted = true;
     async function loadExercise() {
-      setIsLoading(true);
       try {
         const data = await exerciseService.getExercise('exercicio_associacao_ecologica');
-        if (isMounted) {
+        if (isMounted && data) {
           setExerciseData(data);
         }
       } catch (err) {
-        console.warn('Erro ao carregar dados do exercício:', err);
-      } finally {
-        if (isMounted) {
-          setIsLoading(false);
-        }
+        console.warn('Usando dados locais de exercício:', err);
       }
     }
     loadExercise();
@@ -231,14 +227,8 @@ export const ExercicioPage: React.FC = () => {
         <p>{subtitle}</p>
       </div>
 
-      {isLoading ? (
-        <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <div className="cosmic-shimmer" style={{ height: '350px', width: '100%', borderRadius: '20px' }} />
-        </div>
-      ) : (
-        <>
-          {/* Tabuleiro de Ligação de Colunas */}
-          <div className="match-board-container" id="match-board" ref={boardRef}>
+      {/* Tabuleiro de Ligação de Colunas */}
+      <div className="match-board-container" id="match-board" ref={boardRef}>
             {/* Camada SVG dos Cabos */}
             <svg className="match-cables-svg" id="cables-svg">
               <defs>
@@ -380,8 +370,6 @@ export const ExercicioPage: React.FC = () => {
               {isValidating ? 'Validando no Spring Boot...' : 'Verificar Conexões Sagradas ➔'}
             </button>
           </div>
-        </>
-      )}
 
       {/* Modal de Sucesso */}
       {isSuccessModalOpen && (

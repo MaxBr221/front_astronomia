@@ -5,12 +5,14 @@ import { ObservatoryGuideDTO } from '../types/backend';
 import { GUIA_STELLARIUM_HOMEM_VELHO, CONSTELACAO_HOMEM_VELHO } from '../services/mockDatabase';
 import { audioSystem } from '../utils/audioSystem';
 
+import { MOCK_OBSERVATORY_HOMEM_VELHO } from '../services/mockBackendData';
+
 export const ObservatorioPage: React.FC = () => {
   const { navigateTo } = useApp();
   const fallbackGuide = GUIA_STELLARIUM_HOMEM_VELHO;
 
-  const [guideData, setGuideData] = useState<ObservatoryGuideDTO | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [guideData, setGuideData] = useState<ObservatoryGuideDTO>(MOCK_OBSERVATORY_HOMEM_VELHO);
+  const [isSyncing, setIsSyncing] = useState<boolean>(false);
 
   const [isPlayingAudio, setIsPlayingAudio] = useState<boolean>(false);
   const [audioProgress, setAudioProgress] = useState<number>(15);
@@ -27,17 +29,17 @@ export const ObservatorioPage: React.FC = () => {
   useEffect(() => {
     let isMounted = true;
     async function fetchGuide() {
-      setIsLoading(true);
+      setIsSyncing(true);
       try {
         const data = await observatoryService.getGuideByConstellation('homem_velho');
-        if (isMounted) {
+        if (isMounted && data) {
           setGuideData(data);
         }
       } catch (err) {
-        console.warn('Erro ao carregar observatório da API:', err);
+        console.warn('Usando dados de contingência para o observatório:', err);
       } finally {
         if (isMounted) {
-          setIsLoading(false);
+          setIsSyncing(false);
         }
       }
     }
@@ -199,24 +201,22 @@ export const ObservatorioPage: React.FC = () => {
         </div>
       </div>
 
-      {isLoading ? (
-        <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <div className="cosmic-shimmer" style={{ height: '50px', width: '50%', borderRadius: '12px' }} />
-          <div className="cosmic-shimmer" style={{ height: '360px', width: '100%', borderRadius: '20px' }} />
+      {/* Título da Tela */}
+      <div className="stellarium-hero-header">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+          <span className="hud-badge">🪐 PLANETÁRIO INTEGRADO</span>
+          <span style={{ fontSize: '0.78rem', color: 'var(--accent-gold-light)' }}>
+            {guide.location || 'Baía da Traição - PB (Litoral Norte)'}
+          </span>
+          {isSyncing && (
+            <span style={{ fontSize: '0.72rem', color: 'var(--accent-cyan)', fontStyle: 'italic' }}>
+              • Sincronizando com API...
+            </span>
+          )}
         </div>
-      ) : (
-        <>
-          {/* Título da Tela */}
-          <div className="stellarium-hero-header">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-              <span className="hud-badge">🪐 PLANETÁRIO INTEGRADO</span>
-              <span style={{ fontSize: '0.78rem', color: 'var(--accent-gold-light)' }}>
-                {guide.location || 'Baía da Traição - PB (Litoral Norte)'}
-              </span>
-            </div>
-            <h2>{guide.title}</h2>
-            <p>{guide.subtitle || 'Guia Prático de Observação com Stellarium'} • Melhores Épocas: {guide.bestViewingSeason || 'Verão Potiguar'}</p>
-          </div>
+        <h2>{guide.title}</h2>
+        <p>{guide.subtitle || 'Guia Prático de Observação com Stellarium'} • Melhores Épocas: {guide.bestViewingSeason || 'Verão Potiguar'}</p>
+      </div>
 
           {/* Grid Principal */}
           <div className="stellarium-layout-grid">
@@ -509,8 +509,6 @@ export const ObservatorioPage: React.FC = () => {
               <div>{toastMessage}</div>
             </div>
           )}
-        </>
-      )}
     </div>
   );
 };
