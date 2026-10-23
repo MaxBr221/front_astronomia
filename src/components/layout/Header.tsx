@@ -37,7 +37,7 @@ export const Header: React.FC = () => {
       </div>
 
       {/* Perfil do Usuário e Status da Aldeia */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+      <div className="header-user-section">
         <div
           title={isBackendConnected ? 'Conectado à Trilha Celeste Ancestral' : 'Modo de Exploração Offline'}
           style={{

@@ -2855,5 +2855,617 @@ body {
   border-radius: 6px;
 }
 
+.header-user-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.equivalencia-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  border-radius: var(--radius-md);
+}
+
+/* ===================================================================
+   SISTEMA DE RESPONSIVIDADE COMPLETO (DESKTOP, TABLET & MOBILE)
+   =================================================================== */
+
+/* --- TABLETS E TELAS MÉDIAS (<= 1024px) --- */
+@media (max-width: 1024px) {
+  .screen-wrapper {
+    padding: 20px 16px;
+    max-width: 100%;
+  }
+
+  .main-header {
+    padding: 14px 20px;
+    gap: 14px;
+  }
+
+  .header-center-info {
+    min-width: 200px;
+  }
+
+  .constellation-grid,
+  .stellarium-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .knowledge-tabs-card {
+    min-height: auto;
+  }
+
+  .match-board-container {
+    gap: 36px;
+  }
+}
+
+/* --- MOBILE E TELAS PEQUENAS (<= 768px) --- */
+@media (max-width: 768px) {
+  /* Barra Superior Demo/Pitch */
+  .demo-bar {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .demo-bar-badge {
+    font-size: 0.72rem;
+  }
+
+  .demo-nav-pills {
+    width: 100%;
+    order: 3;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .demo-nav-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .demo-pill {
+    padding: 6px 12px;
+    font-size: 0.74rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .demo-actions {
+    margin-left: auto;
+  }
+
+  /* Header Principal - Estrutura Adaptativa em 2 Níveis */
+  .main-header {
+    flex-wrap: wrap;
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .brand-section {
+    gap: 10px;
+  }
+
+  .brand-emblem {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand-emblem svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .brand-text h1 {
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+  }
+
+  .brand-text p {
+    font-size: 0.68rem;
+  }
+
+  .header-user-section {
+    gap: 8px;
+    margin-left: auto;
+  }
+
+  .header-center-info {
+    order: 3;
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 4px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .user-profile-badge {
+    padding: 4px 10px;
+    gap: 8px;
+  }
+
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .user-info .user-name {
+    font-size: 0.8rem;
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .user-info .user-meta {
+    font-size: 0.68rem;
+  }
+
+  /* Container Principal de Telas */
+  .screen-wrapper {
+    padding: 14px 10px;
+  }
+
+  .screen-breadcrumbs-bar {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  /* --- TELA 1: TRILHA CELESTE --- */
+  .trail-hero {
+    margin-bottom: 20px;
+  }
+
+  .trail-hero-badge {
+    font-size: 0.72rem;
+    padding: 3px 10px;
+  }
+
+  .trail-hero h2 {
+    font-size: 1.55rem;
+    line-height: 1.25;
+  }
+
+  .trail-hero p {
+    font-size: 0.86rem;
+    padding: 0 4px;
+  }
+
+  .trail-constellation-container {
+    min-height: auto;
+    padding: 0;
+  }
+
+  .trail-path-svg {
+    display: none;
+  }
+
+  .trail-nodes-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .node-card {
+    padding: 16px;
+  }
+
+  .node-preview-media {
+    height: 160px;
+  }
+
+  .node-description {
+    font-size: 0.82rem;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* --- TELA 2: FICHA DA CONSTELAÇÃO --- */
+  .constellation-header {
+    margin-bottom: 16px;
+  }
+
+  .constellation-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .constellation-header .native-title {
+    font-size: 0.82rem;
+  }
+
+  .viewer-media-wrapper {
+    aspect-ratio: 4 / 3;
+  }
+
+  .viewer-overlay-toggles {
+    top: 8px;
+    right: 8px;
+    gap: 4px;
+  }
+
+  .toggle-chip {
+    padding: 5px 8px;
+    font-size: 0.68rem;
+  }
+
+  .viewer-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 14px;
+  }
+
+  .viewer-legend-dots {
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.74rem;
+  }
+
+  .bilingual-player-card {
+    padding: 14px 16px;
+  }
+
+  .player-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .player-language-selector {
+    width: 100%;
+    display: flex;
+  }
+
+  .lang-btn {
+    flex: 1;
+    text-align: center;
+    padding: 7px 10px;
+    font-size: 0.76rem;
+  }
+
+  .knowledge-tabs-card {
+    padding: 16px;
+  }
+
+  .knowledge-tab-buttons {
+    padding-bottom: 8px;
+    gap: 6px;
+  }
+
+  .tab-btn {
+    padding: 7px 11px;
+    font-size: 0.78rem;
+  }
+
+  .equivalencia-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ficha-actions-footer {
+    flex-direction: column-reverse;
+    gap: 10px;
+    margin-top: 18px;
+    padding-top: 14px;
+  }
+
+  .ficha-actions-footer button {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+  }
+
+  /* --- TELA 3: OBSERVATÓRIO STELLARIUM --- */
+  .stellarium-hero-header h2 {
+    font-size: 1.55rem;
+  }
+
+  .stellarium-hero-header p {
+    font-size: 0.86rem;
+  }
+
+  .planetarium-screen {
+    aspect-ratio: 4 / 3;
+    padding: 12px;
+  }
+
+  .planetarium-compass {
+    gap: 16px;
+    font-size: 0.7rem;
+  }
+
+  .planetarium-controls-strip {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .sim-slider-group {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .sim-slider-group input {
+    flex: 1;
+  }
+
+  .stellarium-controls-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .step-item {
+    padding: 12px;
+  }
+
+  .action-box {
+    padding: 14px;
+  }
+
+  /* --- TELA 4: EXERCÍCIO PRÁTICO --- */
+  .exercise-title-center h2 {
+    font-size: 1.35rem;
+  }
+
+  .exercise-title-center p {
+    font-size: 0.82rem;
+  }
+
+  .exercise-top-hud {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .match-board-container {
+    flex-direction: column;
+    gap: 22px;
+    min-height: auto;
+  }
+
+  .match-column {
+    gap: 12px;
+  }
+
+  .match-card {
+    padding: 12px 14px;
+    min-height: 72px;
+    gap: 10px;
+  }
+
+  .match-card-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .match-card-text h4 {
+    font-size: 0.88rem;
+  }
+
+  .match-card-text p {
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+
+  .exercise-footer-actions {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+
+  .exercise-footer-actions button {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+  }
+
+  /* Modais Universais */
+  .modal-backdrop {
+    padding: 12px;
+  }
+
+  .modal-content-card {
+    padding: 22px 16px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: var(--radius-lg);
+  }
+
+  .modal-content-card h3 {
+    font-size: 1.35rem;
+  }
+
+  .modal-emblem-badge {
+    width: 60px;
+    height: 60px;
+    font-size: 1.7rem;
+    margin-bottom: 12px;
+  }
+
+  .modal-content-card button {
+    width: 100%;
+  }
+
+  /* Toast */
+  .cosmic-toast {
+    left: 12px;
+    right: 12px;
+    bottom: 16px;
+    text-align: center;
+  }
+
+  /* Modal Fullscreen Lightbox */
+  .fullscreen-top-nav {
+    padding: 10px 14px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .fullscreen-toolbar-actions {
+    justify-content: space-between;
+  }
+
+  .fullscreen-image-stage {
+    max-width: 96vw;
+    max-height: 70vh;
+  }
+
+  .fullscreen-bottom-legend {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 10px 14px;
+  }
+
+  /* --- TELA 5: LANDING PAGE --- */
+  .landing-navbar {
+    padding: 12px 16px;
+    margin-bottom: 24px;
+  }
+
+  .landing-nav-links {
+    display: none;
+  }
+
+  .landing-auth-actions {
+    margin-left: auto;
+    gap: 8px;
+  }
+
+  .landing-hero-section {
+    padding: 10px 4px;
+    margin-bottom: 36px;
+  }
+
+  .landing-hero-title {
+    font-size: clamp(1.75rem, 7vw, 2.3rem);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .landing-hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 22px;
+  }
+
+  .landing-hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .landing-hero-cta-group button {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 0.95rem;
+  }
+
+  .constellations-showcase-grid,
+  .methodology-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .landing-cta-banner {
+    padding: 30px 18px;
+  }
+
+  .landing-cta-banner h2 {
+    font-size: 1.45rem;
+  }
+
+  .landing-cta-banner p {
+    font-size: 0.88rem;
+  }
+
+  /* --- TELA 6: AUTH (LOGIN & CADASTRO) --- */
+  .auth-page-wrapper {
+    padding: 16px 10px;
+    min-height: auto;
+  }
+
+  .auth-card-container {
+    padding: 24px 18px;
+    border-radius: var(--radius-lg);
+  }
+
+  .auth-header h2 {
+    font-size: 1.35rem;
+  }
+
+  .auth-header p {
+    font-size: 0.78rem;
+  }
+
+  .auth-nav-tab-btn {
+    font-size: 0.78rem;
+    padding: 8px 10px;
+  }
+
+  .auth-input {
+    font-size: 16px;
+    padding: 12px 14px;
+  }
+
+  .avatar-selection-row {
+    gap: 6px;
+  }
+
+  .avatar-option-card {
+    padding: 6px 4px;
+  }
+
+  .avatar-option-card img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .avatar-option-card span {
+    font-size: 0.6rem;
+  }
+}
+
+/* --- TELAS EXTRA PEQUENAS (<= 380px) --- */
+@media (max-width: 380px) {
+  .brand-text h1 {
+    font-size: 0.95rem;
+  }
+
+  .demo-bar-badge {
+    display: none;
+  }
+
+  .match-card {
+    padding: 10px;
+  }
+
+  .match-card-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .btn-hero-primary,
+  .btn-hero-secondary {
+    font-size: 0.88rem;
+    padding: 11px 16px;
+  }
+}
+
+
 
 

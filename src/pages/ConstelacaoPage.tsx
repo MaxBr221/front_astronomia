@@ -384,32 +384,34 @@ export const ConstelacaoPage: React.FC = () => {
                     {fallbackData.tabs?.equivalencia?.content?.[0]?.text || 'Enquanto a astronomia ocidental separa em Órion e Touro, a etnoastronomia Potiguara unifica ambas em Tuira.'}
                   </p>
 
-                  <table className="equivalencia-table">
-                    <thead>
-                      <tr>
-                        <th>Parte de Tuira</th>
-                        <th>Estrelas Ocidentais</th>
-                        <th>Sentido Cosmológico</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {(fallbackData.tabs?.equivalencia?.content?.[1]?.table || [
-                        { elemento: 'Cabeça e Penacho', ocidental: 'Plêiades e Touro', significado: 'Seichu (Penas cerimoniais)' },
-                        { elemento: 'Braço e Borduna', ocidental: 'Betelgeuse e Bellatrix', significado: 'Braço com a borduna sagrada' },
-                        { elemento: 'Cinturão', ocidental: 'Três Marias', significado: 'Joykó (faixa de contas)' },
-                        { elemento: 'Perna Saudável', ocidental: 'Rigel', significado: 'Perna firme no chão do céu' },
-                        { elemento: 'Perna Cortada', ocidental: 'Aldebaran', significado: 'A ferida mítica e fertilidade' }
-                      ]).map((row, idx) => (
-                        <tr key={idx}>
-                          <td style={{ fontWeight: 700, color: '#fff' }}>{row.elemento}</td>
-                          <td>
-                            <span style={{ color: 'var(--accent-cyan)', fontWeight: 600 }}>{row.ocidental}</span>
-                          </td>
-                          <td>{row.significado}</td>
+                  <div className="equivalencia-table-wrapper">
+                    <table className="equivalencia-table">
+                      <thead>
+                        <tr>
+                          <th>Parte de Tuira</th>
+                          <th>Estrelas Ocidentais</th>
+                          <th>Sentido Cosmológico</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        {(fallbackData.tabs?.equivalencia?.content?.[1]?.table || [
+                          { elemento: 'Cabeça e Penacho', ocidental: 'Plêiades e Touro', significado: 'Seichu (Penas cerimoniais)' },
+                          { elemento: 'Braço e Borduna', ocidental: 'Betelgeuse e Bellatrix', significado: 'Braço com a borduna sagrada' },
+                          { elemento: 'Cinturão', ocidental: 'Três Marias', significado: 'Joykó (faixa de contas)' },
+                          { elemento: 'Perna Saudável', ocidental: 'Rigel', significado: 'Perna firme no chão do céu' },
+                          { elemento: 'Perna Cortada', ocidental: 'Aldebaran', significado: 'A ferida mítica e fertilidade' }
+                        ]).map((row, idx) => (
+                          <tr key={idx}>
+                            <td style={{ fontWeight: 700, color: '#fff' }}>{row.elemento}</td>
+                            <td>
+                              <span style={{ color: 'var(--accent-cyan)', fontWeight: 600 }}>{row.ocidental}</span>
+                            </td>
+                            <td>{row.significado}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
 
                   <p style={{ color: '#cbd5e1', fontSize: '0.86rem', marginTop: '10px' }}>
                     {fallbackData.tabs?.equivalencia?.content?.[2]?.text || 'Betelgeuse brilha com tom avermelhado quente, enquanto Rigel reluz em azul potente.'}
