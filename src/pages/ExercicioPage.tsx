@@ -57,7 +57,7 @@ export const ExercicioPage: React.FC = () => {
     };
   }, []);
 
-  // Recalcular posições das linhas curvas SVG
+  // Recalcular posições das linhas curvas SVG (robusto para desktop e mobile)
   const updateCables = () => {
     if (!boardRef.current) return;
     const boardRect = boardRef.current.getBoundingClientRect();
@@ -77,8 +77,17 @@ export const ExercicioPage: React.FC = () => {
       const x2 = rightRect.left + rightRect.width / 2 - boardRect.left;
       const y2 = rightRect.top + rightRect.height / 2 - boardRect.top;
 
-      const dx = Math.abs(x2 - x1) * 0.5;
-      const pathD = `M ${x1} ${y1} C ${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`;
+      let pathD = '';
+      if (x2 >= x1) {
+        // Disposição horizontal lado a lado: curva suave elegante no eixo X
+        const dx = Math.max(16, (x2 - x1) * 0.48);
+        pathD = `M ${x1} ${y1} C ${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`;
+      } else {
+        // Fallback defensivo caso haja reflow transitório
+        const dx = Math.min(30, Math.abs(x2 - x1) * 0.3);
+        const dy = Math.max(20, Math.abs(y2 - y1) * 0.35);
+        pathD = `M ${x1} ${y1} C ${x1 + dx} ${y1 + dy}, ${x2 - dx} ${y2 - dy}, ${x2} ${y2}`;
+      }
 
       newCables.push({
         id: `${leftId}-${rightId}`,
@@ -92,8 +101,28 @@ export const ExercicioPage: React.FC = () => {
 
   useEffect(() => {
     updateCables();
+    const raf = requestAnimationFrame(updateCables);
+    const t1 = setTimeout(updateCables, 80);
+    const t2 = setTimeout(updateCables, 260);
+
+    let ro: ResizeObserver | null = null;
+    if (boardRef.current && typeof ResizeObserver !== 'undefined') {
+      ro = new ResizeObserver(() => {
+        updateCables();
+      });
+      ro.observe(boardRef.current);
+    }
+
     window.addEventListener('resize', updateCables);
-    return () => window.removeEventListener('resize', updateCables);
+    window.addEventListener('scroll', updateCables, { passive: true });
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      if (ro) ro.disconnect();
+      window.removeEventListener('resize', updateCables);
+      window.removeEventListener('scroll', updateCables);
+    };
   }, [userMatches]);
 
   const handleLeftCardClick = (id: string) => {
@@ -247,7 +276,7 @@ export const ExercicioPage: React.FC = () => {
                       strokeWidth="4"
                       strokeLinecap="round"
                       filter="url(#cableGlow)"
-                      style={{ cursor: 'pointer' }}
+                      style={{ cursor: 'pointer', pointerEvents: 'stroke' }}
                       onClick={() => {
                         const [leftId] = c.id.split('-');
                         setUserMatches(prev => {

@@ -203,9 +203,9 @@ export const ObservatorioPage: React.FC = () => {
 
       {/* Título da Tela */}
       <div className="stellarium-hero-header">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+        <div className="stellarium-meta-tags">
           <span className="hud-badge">🪐 PLANETÁRIO INTEGRADO</span>
-          <span style={{ fontSize: '0.78rem', color: 'var(--accent-gold-light)' }}>
+          <span className="stellarium-location-badge">
             {guide.location || 'Baía da Traição - PB (Litoral Norte)'}
           </span>
           {isSyncing && (

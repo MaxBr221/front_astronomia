@@ -143,9 +143,9 @@ export const ConstelacaoPage: React.FC = () => {
 
       {/* Cabeçalho da Constelação */}
       <div className="constellation-header">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
+        <div className="constellation-meta-tags">
           <span className="node-status-badge badge-in-progress">Constelação Guia</span>
-          <span style={{ fontSize: '0.78rem', color: 'var(--accent-cyan)' }}>
+          <span className="constellation-region-badge">
             Região Celeste: {westernEquiv}
           </span>
           {isUpdating && (
