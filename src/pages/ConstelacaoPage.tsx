@@ -183,7 +183,7 @@ export const ConstelacaoPage: React.FC = () => {
                     setShowArt(!showArt);
                   }}
                 >
-                  🎨 Arte Ancestral
+                  🎨 Arte
                 </button>
                 <button
                   className={`toggle-chip ${showStars ? 'active' : ''}`}
@@ -245,7 +245,7 @@ export const ConstelacaoPage: React.FC = () => {
                   <span>Aldebaran (Perna Cortada)</span>
                 </div>
               </div>
-              <span style={{ fontSize: '0.74rem', color: 'var(--accent-gold-light)' }}>
+              <span className="viewer-hint-text" style={{ fontSize: '0.74rem', color: 'var(--accent-gold-light)' }}>
                 Passe o mouse nas estrelas
               </span>
             </div>

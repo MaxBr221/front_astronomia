@@ -229,18 +229,28 @@ export const ObservatorioPage: React.FC = () => {
                   filter: nightVision ? 'sepia(1) saturate(5) hue-rotate(-50deg) contrast(1.2)' : 'none'
                 }}
               >
-                <div
-                  className="planetarium-screen"
-                  style={{
-                    backgroundImage: `url('${CONSTELACAO_HOMEM_VELHO.image}')`,
-                    transform: `rotate(${skyRotation}deg) scale(1.15)`,
-                    transition: isRotating ? 'none' : 'transform 0.2s ease-out'
-                  }}
-                >
-                  <div className="planetarium-grid-overlay" />
-                  <div className="planetarium-crosshair" />
+                <div className="planetarium-screen">
+                  {/* Camada do Céu que Gira Suavemente sem distorcer HUD */}
+                  <div
+                    className="planetarium-sky-layer"
+                    style={{
+                      position: 'absolute',
+                      inset: '-15%',
+                      width: '130%',
+                      height: '130%',
+                      backgroundImage: `url('${CONSTELACAO_HOMEM_VELHO.image}')`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      transform: `rotate(${skyRotation}deg)`,
+                      transition: isRotating ? 'none' : 'transform 0.2s ease-out',
+                      pointerEvents: 'none',
+                      zIndex: 1
+                    }}
+                  />
+                  <div className="planetarium-grid-overlay" style={{ zIndex: 2 }} />
+                  <div className="planetarium-crosshair" style={{ zIndex: 3 }} />
 
-                  <div className="planetarium-top-hud">
+                  <div className="planetarium-top-hud" style={{ position: 'relative', zIndex: 4 }}>
                     <span className="hud-badge">CÉU INDÍGENA & OCIDENTAL</span>
                     <span
                       style={{
@@ -256,7 +266,7 @@ export const ObservatorioPage: React.FC = () => {
                     </span>
                   </div>
 
-                  <div className="planetarium-compass">
+                  <div className="planetarium-compass" style={{ zIndex: 4 }}>
                     <span>LESTE (90°)</span>
                     <span className="highlight">SUDESTE (160° - TUIRA)</span>
                     <span>SUL (180°)</span>
