@@ -37,7 +37,8 @@ const VALID_SCREENS: ScreenId[] = [
   'observatorio',
   'exercicio',
   'login',
-  'cadastro'
+  'cadastro',
+  'dicionario'
 ];
 
 function mapBackendUserToUsuarioDTO(backendUser: UserBackendDTO): UsuarioDTO {

@@ -9,11 +9,12 @@ import { ObservatorioPage } from './pages/ObservatorioPage';
 import { ExercicioPage } from './pages/ExercicioPage';
 import { LoginPage } from './pages/LoginPage';
 import { CadastroPage } from './pages/CadastroPage';
+import { DicionarioPage } from './pages/DicionarioPage';
 
 export const App: React.FC = () => {
   const { currentScreen, isAuthenticated } = useApp();
 
-  const showMainHeader = ['trilha', 'constelacao', 'observatorio', 'exercicio'].includes(currentScreen);
+  const showMainHeader = ['trilha', 'constelacao', 'observatorio', 'exercicio', 'dicionario'].includes(currentScreen);
 
   return (
     <div id="app">
@@ -29,6 +30,7 @@ export const App: React.FC = () => {
         {currentScreen === 'constelacao' && <ConstelacaoPage />}
         {currentScreen === 'observatorio' && <ObservatorioPage />}
         {currentScreen === 'exercicio' && <ExercicioPage />}
+        {currentScreen === 'dicionario' && <DicionarioPage />}
         {currentScreen === 'login' && (isAuthenticated ? <TrilhaPage /> : <LoginPage />)}
         {currentScreen === 'cadastro' && (isAuthenticated ? <TrilhaPage /> : <CadastroPage />)}
       </main>

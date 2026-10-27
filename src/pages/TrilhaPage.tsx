@@ -189,6 +189,63 @@ export const TrilhaPage: React.FC = () => {
           )}
         </div>
       </div>
+
+      {/* Banner de Acesso ao Dicionário Cósmico */}
+      <div
+        className="trail-dict-banner"
+        style={{
+          maxWidth: '1200px',
+          margin: '40px auto 20px auto',
+          background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(124, 58, 237, 0.15))',
+          border: '1px solid rgba(245, 158, 11, 0.35)',
+          borderRadius: 'var(--radius-xl)',
+          padding: '24px 32px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '18px',
+          backdropFilter: 'blur(16px)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <div
+            style={{
+              fontSize: '2.2rem',
+              background: 'rgba(0, 0, 0, 0.35)',
+              width: '56px',
+              height: '56px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: '50%',
+              border: '1px solid rgba(245, 158, 11, 0.4)'
+            }}
+          >
+            📖
+          </div>
+          <div>
+            <h3 style={{ fontFamily: 'var(--font-heading)', color: '#fff', fontSize: '1.25rem', marginBottom: '4px' }}>
+              Dicionário Cósmico Tupi-Guarani
+            </h3>
+            <p style={{ color: '#cbd5e1', fontSize: '0.88rem', margin: 0 }}>
+              Consulte 22 termos ancestrais para estrelas, constelações (Tingasu, Tuiba’e), fases da lua e galáxias com áudio e pronúncia.
+            </p>
+          </div>
+        </div>
+
+        <button
+          className="btn-primary-highlight"
+          onClick={() => {
+            audioSystem.playClick();
+            navigateTo('dicionario');
+          }}
+          style={{ whiteSpace: 'nowrap' }}
+        >
+          Explorar Dicionário ➔
+        </button>
+      </div>
     </div>
   );
 };

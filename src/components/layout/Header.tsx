@@ -2,7 +2,7 @@ import React from 'react';
 import { useApp } from '../../context/AppContext';
 
 export const Header: React.FC = () => {
-  const { user, isBackendConnected } = useApp();
+  const { user, isBackendConnected, navigateTo, currentScreen } = useApp();
 
   return (
     <header className="main-header" id="platform-header">
@@ -63,6 +63,14 @@ export const Header: React.FC = () => {
           />
           {isBackendConnected ? 'Aldeia Conectada' : 'Modo Offline'}
         </div>
+
+        <button
+          className={`header-dict-btn ${currentScreen === 'dicionario' ? 'active' : ''}`}
+          onClick={() => navigateTo('dicionario')}
+          title="Consultar Dicionário Astronômico Tupi-Guarani"
+        >
+          📖 Dicionário Tupi
+        </button>
 
         <div className="user-profile-badge">
           <img src={user.avatar} alt={user.name} className="user-avatar" />

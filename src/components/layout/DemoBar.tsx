@@ -9,9 +9,11 @@ export const DemoBar: React.FC = () => {
   const screens: { id: ScreenId; label: string }[] = isAuthenticated
     ? [
         { id: 'trilha', label: '🌌 Trilha Celeste' },
+        { id: 'dicionario', label: '📖 Dicionário' },
         { id: 'constelacao', label: '🏹 Ficha Homem Velho' },
         { id: 'observatorio', label: '🔭 Guia Stellarium' },
-        { id: 'exercicio', label: '✍️ Exercício' }
+        { id: 'exercicio', label: '✍️ Exercício' },
+        { id: 'dicionario', label: '📖 Dicionário Tupi' }
       ]
     : [
         { id: 'landing', label: '🪐 Início' },

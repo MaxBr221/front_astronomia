@@ -1,6 +1,6 @@
 // TypeScript Types & Models para o ecossistema Etnoastronomia Potiguara (Front-end + Spring Boot DTOs)
 
-export type ScreenId = 'landing' | 'trilha' | 'constelacao' | 'observatorio' | 'exercicio' | 'login' | 'cadastro';
+export type ScreenId = 'landing' | 'trilha' | 'constelacao' | 'observatorio' | 'exercicio' | 'login' | 'cadastro' | 'dicionario';
 
 export interface LoginDTO {
   email: string;
@@ -165,4 +165,16 @@ export interface UsuarioDTO {
   lunarCycle: string;
   lives: number;
   maxLives: number;
+}
+
+
+export interface TermoDicionarioDTO {
+  id: string;
+  tupi: string;
+  portugues: string;
+  categoria: 'astros' | 'estrelas' | 'constelacoes' | 'lua' | 'universo';
+  categoriaLabel: string;
+  detalhe?: string;
+  regiaoCeleste?: string;
+  icone: string;
 }
