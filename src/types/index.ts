@@ -31,6 +31,8 @@ export interface Estrela {
 export interface TabConteudo {
   heading: string;
   text?: string;
+  source?: string;
+  tag?: string;
   table?: {
     elemento: string;
     ocidental: string;
@@ -65,6 +67,7 @@ export interface ConstelacaoDTO {
     historia: AbaConhecimento;
     equivalencia: AbaConhecimento;
     calendario: AbaConhecimento;
+    fontes?: AbaConhecimento;
   };
 }
 

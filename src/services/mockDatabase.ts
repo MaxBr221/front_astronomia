@@ -166,6 +166,37 @@ export const CONSTELACAO_HOMEM_VELHO: ConstelacaoDTO = {
           text: 'O ângulo de inclinação de Tuira coincide com as marés de sizígia na Baía da Traição, determinando o período ideal para os currais de pesca e a mariscagem nos manguezais.'
         }
       ]
+    },
+    fontes: {
+      id: 'fontes',
+      label: 'Astronomia Cultural & Fontes',
+      badge: 'Registros Didáticos',
+      content: [
+        {
+          heading: 'Tuiba’e – homem velho',
+          tag: 'Região de Touro e Órion • Verão no Sul e Chuvas no Norte',
+          text: 'A constelação indígena do Homem Velho (Tuiba\'e), localizada na região de Touro e Órion, tem a forma de um idoso com um bastão. Seu surgimento total ao anoitecer, na segunda quinzena de dezembro ao Leste, sinaliza o início do verão no sul do Brasil e da estação chuvosa no Norte.',
+          source: 'FURTADO, Kenedy Daniel Calegari; PACHECO, Hualan Patrício; IGNA, Fernando Dall. Astronomia Cultural no Ensino Médio: Uma Sequência Didática para a abordagem das constelações celestes indígenas. Revista Latino-Americana de Educação em Astronomia, n. 38, p. 61-91, 2024.'
+        },
+        {
+          heading: 'Tapi’ira – Anta do Norte',
+          tag: 'Contida na Via Láctea • Maior Mamífero do Brasil',
+          text: 'Inspirada no maior mamífero do Brasil, a constelação indígena Anta do Norte fica totalmente contida na Via Láctea, cuja estrutura ajuda a definir seu contorno visual marcante. Ela recebe esse nome específico para se diferenciar de outras constelações da Anta também presentes na galáxia.',
+          source: 'FURTADO, Kenedy Daniel Calegari; PACHECO, Hualan Patrício; IGNA, Fernando Dall. Astronomia Cultural no Ensino Médio: Uma Sequência Didática para a abordagem das constelações celestes indígenas. Revista Latino-Americana de Educação em Astronomia, n. 38, p. 61-91, 2024.'
+        },
+        {
+          heading: 'Tapi’irapé – O Caminho da Anta',
+          tag: 'A Via Láctea Ancestral • Mito Suruí (Tronco Tupi)',
+          text: 'Para nossos antepassados, somente a anta, maior mamífero do Brasil, poderia abrir um caminho tão grande no céu. Por isso, chamavam a nossa galáxia de Caminho da Anta (tapi’irapé).\n\nEntre o nosso povo Potiguara do século XXI, infelizmente não sobreviveu nenhuma lenda, conto ou mito relacionado ao Caminho da Anta. Todavia, o povo Suruí, que também é do tronco tupi, tem um mito um tanto curioso sobre isso:\n\n“Os animais estavam cuidando de suas vidas na floresta, como sempre faziam. De repente, ouviram um canto muito bonito vindo do céu. Mas, como a maioria não voava, pensaram logo em construir uma escada. Alguns animais, dentre eles a anta, lançaram suas flechas em direção ao céu, mas não conseguiam acertar uma atrás da outra para montar a escada. Então, lembraram-se do tatu, ele era considerado o melhor atirador, um craque. O tatuzinho veio e com suas flechas conseguiu fazer o caminho para o céu e todos os animais foram ver de perto o pássaro cantar. Na hora de voltar, todos procuraram o caminho, mas agoniados, entraram ao mesmo tempo. Quando a anta foi entrando, pelo peso da bicha as flechas se partiram. Alguns animais caíram na floresta e viraram caça para a gente comer. Outros ficaram no céu, presos no caminho da anta.” (NEVES, 2007,p.2).',
+          source: 'FURTADO, Kenedy Daniel Calegari; PACHECO, Hualan Patrício; IGNA, Fernando Dall. Astronomia Cultural no Ensino Médio: Uma Sequência Didática para a abordagem das constelações celestes indígenas. Revista Latino-Americana de Educação em Astronomia, n. 38, p. 61-91, 2024. | NEVES, I. dos S. (2007). Tapirapé: discurso fundador da identidade tupi. Revista do SETA, 1. ISSN 1981-9153.'
+        },
+        {
+          heading: 'Nhandu – Ema',
+          tag: 'Cruzeiro do Sul ao Escorpião • Calendário Agrícola Natural',
+          text: 'Para os povos Tupi-Guarani, a abóboda celeste funciona como um calendário agrícola natural. Um dos seus principais referenciais é a constelação da Ema (Guyrá Nhandu) localizada no trecho celeste situado entre o Cruzeiro do Sul e o Escorpião.',
+          source: 'FURTADO, Kenedy Daniel Calegari; PACHECO, Hualan Patrício; IGNA, Fernando Dall. Astronomia Cultural no Ensino Médio: Uma Sequência Didática para a abordagem das constelações celestes indígenas. Revista Latino-Americana de Educação em Astronomia, n. 38, p. 61-91, 2024.'
+        }
+      ]
     }
   }
 };

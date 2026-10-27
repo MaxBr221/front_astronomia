@@ -14,7 +14,8 @@ export const ConstelacaoPage: React.FC = () => {
   // Inicia com dados já prontos para nunca ficar tela preta/vazia
   const [detail, setDetail] = useState<ConstellationDetailDTO>(MOCK_CONSTELLATION_HOMEM_VELHO);
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
-  const [activeTab, setActiveTab] = useState<'historia' | 'equivalencia' | 'calendario'>('historia');
+  const [activeTab, setActiveTab] = useState<'historia' | 'equivalencia' | 'calendario' | 'fontes'>('historia');
+  const [fonteFilter, setFonteFilter] = useState<'todas' | 'tuiba' | 'tapiira' | 'tapiirape' | 'nhandu'>('todas');
   const [isPlayingAudio, setIsPlayingAudio] = useState<boolean>(false);
   const [audioLang, setAudioLang] = useState<'tupi' | 'pt'>('tupi');
   const [audioProgress, setAudioProgress] = useState<number>(28);
@@ -351,6 +352,15 @@ export const ConstelacaoPage: React.FC = () => {
               >
                 🌧️ Calendário Ecológico & Clima
               </button>
+              <button
+                className={`tab-btn ${activeTab === 'fontes' ? 'active' : ''}`}
+                onClick={() => {
+                  audioSystem.playClick();
+                  setActiveTab('fontes');
+                }}
+              >
+                📚 Fontes & Registros Didáticos
+              </button>
             </div>
 
             {/* Conteúdo da Aba Ativa */}
@@ -375,6 +385,230 @@ export const ConstelacaoPage: React.FC = () => {
                     </p>
                   </div>
                 </>
+              )}
+
+              {activeTab === 'fontes' && (
+                <div className="fontes-tab-container">
+                  <div className="tab-content-heading">Registros da Astronomia Cultural & Fontes Didáticas</div>
+                  
+                  {/* Contexto Introdutório */}
+                  <div className="fontes-intro-card">
+                    <span className="fontes-intro-tag">Sequência Didática & Tradição Oral</span>
+                    <p>
+                      Mapeamento fundamentado na pesquisa acadêmica de <strong>Furtado, Pacheco & Igna (2024)</strong> sobre etnoastronomia no Ensino Médio, somado aos relatos ancestrais do tronco Tupi (Neves, 2007).
+                    </p>
+                  </div>
+
+                  {/* Filtro Rápido entre as Figuras Celestes */}
+                  <div className="fontes-filter-pills">
+                    <button
+                      className={`filter-pill-btn ${fonteFilter === 'todas' ? 'active' : ''}`}
+                      onClick={() => {
+                        audioSystem.playClick();
+                        setFonteFilter('todas');
+                      }}
+                    >
+                      ✨ Todas as 4 Figuras
+                    </button>
+                    <button
+                      className={`filter-pill-btn ${fonteFilter === 'tuiba' ? 'active' : ''}`}
+                      onClick={() => {
+                        audioSystem.playClick();
+                        setFonteFilter('tuiba');
+                      }}
+                    >
+                      👴 Tuiba’e (Homem Velho)
+                    </button>
+                    <button
+                      className={`filter-pill-btn ${fonteFilter === 'tapiira' ? 'active' : ''}`}
+                      onClick={() => {
+                        audioSystem.playClick();
+                        setFonteFilter('tapiira');
+                      }}
+                    >
+                      🦏 Tapi’ira (Anta do Norte)
+                    </button>
+                    <button
+                      className={`filter-pill-btn ${fonteFilter === 'tapiirape' ? 'active' : ''}`}
+                      onClick={() => {
+                        audioSystem.playClick();
+                        setFonteFilter('tapiirape');
+                      }}
+                    >
+                      🌌 Tapi’irapé (Caminho da Anta)
+                    </button>
+                    <button
+                      className={`filter-pill-btn ${fonteFilter === 'nhandu' ? 'active' : ''}`}
+                      onClick={() => {
+                        audioSystem.playClick();
+                        setFonteFilter('nhandu');
+                      }}
+                    >
+                      🦤 Nhandu (Ema)
+                    </button>
+                  </div>
+
+                  {/* Lista de Registros */}
+                  <div className="fontes-cards-list">
+                    {/* 1. Tuiba'e – Homem Velho */}
+                    {(fonteFilter === 'todas' || fonteFilter === 'tuiba') && (
+                      <div className="fonte-item-card" id="card-tuiba">
+                        <div className="fonte-card-top">
+                          <div className="fonte-title-group">
+                            <span className="fonte-figure-icon">👴</span>
+                            <div>
+                              <h4 className="fonte-figure-title">Tuiba’e – homem velho</h4>
+                              <span className="fonte-region-badge">Região de Touro e Órion • Verão no Sul & Chuvas no Norte</span>
+                            </div>
+                          </div>
+                          <button
+                            className="btn-pronounce-small"
+                            onClick={() => audioSystem.speak("Tuiba'e... Homem Velho.")}
+                            title="Ouvir pronúncia"
+                          >
+                            🔊 Ouvir
+                          </button>
+                        </div>
+
+                        <p className="fonte-description-text">
+                          A constelação indígena do Homem Velho (<em>Tuiba'e</em>), localizada na região de Touro e Órion, tem a forma de um idoso com um bastão. Seu surgimento total ao anoitecer, na segunda quinzena de dezembro ao Leste, sinaliza o início do verão no sul do Brasil e da estação chuvosa no Norte.
+                        </p>
+
+                        <div className="fonte-academic-citation">
+                          <div className="citation-header">
+                            <span>📖 Fonte:</span>
+                          </div>
+                          <p className="citation-text">
+                            FURTADO, Kenedy Daniel Calegari; PACHECO, Hualan Patrício; IGNA, Fernando Dall. <strong>Astronomia Cultural no Ensino Médio: Uma Sequência Didática para a abordagem das constelações celestes indígenas</strong>. Revista Latino-Americana de Educação em Astronomia, n. 38, p. 61-91, 2024.
+                          </p>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* 2. Tapi'ira – Anta do Norte */}
+                    {(fonteFilter === 'todas' || fonteFilter === 'tapiira') && (
+                      <div className="fonte-item-card" id="card-tapiira" style={{ borderLeftColor: '#38bdf8' }}>
+                        <div className="fonte-card-top">
+                          <div className="fonte-title-group">
+                            <span className="fonte-figure-icon">🦏</span>
+                            <div>
+                              <h4 className="fonte-figure-title">Tapi’ira – Anta do Norte</h4>
+                              <span className="fonte-region-badge" style={{ borderColor: 'rgba(56, 189, 248, 0.4)', color: '#38bdf8', background: 'rgba(56, 189, 248, 0.08)' }}>
+                                Totalmente contida na Via Láctea • Maior Mamífero do Brasil
+                              </span>
+                            </div>
+                          </div>
+                          <button
+                            className="btn-pronounce-small"
+                            onClick={() => audioSystem.speak("Tapi'ira... Anta do Norte.")}
+                            title="Ouvir pronúncia"
+                          >
+                            🔊 Ouvir
+                          </button>
+                        </div>
+
+                        <p className="fonte-description-text">
+                          Inspirada no maior mamífero do Brasil, a constelação indígena Anta do Norte fica totalmente contida na Via Láctea, cuja estrutura ajuda a definir seu contorno visual marcante. Ela recebe esse nome específico para se diferenciar de outras constelações da Anta também presentes na galáxia.
+                        </p>
+
+                        <div className="fonte-academic-citation">
+                          <div className="citation-header">
+                            <span>📖 Fonte:</span>
+                          </div>
+                          <p className="citation-text">
+                            FURTADO, Kenedy Daniel Calegari; PACHECO, Hualan Patrício; IGNA, Fernando Dall. <strong>Astronomia Cultural no Ensino Médio: Uma Sequência Didática para a abordagem das constelações celestes indígenas</strong>. Revista Latino-Americana de Educação em Astronomia, n. 38, p. 61-91, 2024.
+                          </p>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* 3. Tapi'irapé – O Caminho da Anta */}
+                    {(fonteFilter === 'todas' || fonteFilter === 'tapiirape') && (
+                      <div className="fonte-item-card" id="card-tapiirape" style={{ borderLeftColor: '#c084fc' }}>
+                        <div className="fonte-card-top">
+                          <div className="fonte-title-group">
+                            <span className="fonte-figure-icon">🌌</span>
+                            <div>
+                              <h4 className="fonte-figure-title">Tapi’irapé – O Caminho da Anta</h4>
+                              <span className="fonte-region-badge" style={{ borderColor: 'rgba(192, 132, 252, 0.4)', color: '#c084fc', background: 'rgba(192, 132, 252, 0.08)' }}>
+                                A Galáxia Via Láctea • Mito Suruí (Tronco Tupi)
+                              </span>
+                            </div>
+                          </div>
+                          <button
+                            className="btn-pronounce-small"
+                            onClick={() => audioSystem.speak("Tapi'irapé... O Caminho da Anta.")}
+                            title="Ouvir pronúncia"
+                          >
+                            🔊 Ouvir
+                          </button>
+                        </div>
+
+                        <p className="fonte-description-text">
+                          Para nossos antepassados, somente a anta, maior mamífero do Brasil, poderia abrir um caminho tão grande no céu. Por isso, chamavam a nossa galáxia de Caminho da Anta (<em>tapi’irapé</em>).
+                        </p>
+
+                        <div className="fonte-potiguara-note">
+                          Entre o nosso povo Potiguara do século XXI, infelizmente não sobreviveu nenhuma lenda, conto ou mito relacionado ao Caminho da Anta. Todavia, o povo Suruí, que também é do tronco tupi, tem um mito um tanto curioso sobre isso:
+                        </div>
+
+                        <div className="surui-myth-box">
+                          <p className="surui-myth-text">
+                            “Os animais estavam cuidando de suas vidas na floresta, como sempre faziam. De repente, ouviram um canto muito bonito vindo do céu. Mas, como a maioria não voava, pensaram logo em construir uma escada. Alguns animais, dentre eles a anta, lançaram suas flechas em direção ao céu, mas não conseguiam acertar uma atrás da outra para montar a escada. Então, lembraram-se do tatu, ele era considerado o melhor atirador, um craque. O tatuzinho veio e com suas flechas conseguiu fazer o caminho para o céu e todos os animais foram ver de perto o pássaro cantar. Na hora de voltar, todos procuraram o caminho, mas agoniados, entraram ao mesmo tempo. Quando a anta foi entrando, pelo peso da bicha as flechas se partiram. Alguns animais caíram na floresta e viraram caça para a gente comer. Outros ficaram no céu, presos no caminho da anta.”
+                          </p>
+                          <div className="myth-attribution">— (NEVES, 2007, p. 2)</div>
+                        </div>
+
+                        <div className="fonte-academic-citation">
+                          <div className="citation-header">
+                            <span>📖 Referências:</span>
+                          </div>
+                          <p className="citation-text">
+                            • FURTADO, Kenedy Daniel Calegari; PACHECO, Hualan Patrício; IGNA, Fernando Dall. <strong>Astronomia Cultural no Ensino Médio: Uma Sequência Didática para a abordagem das constelações celestes indígenas</strong>. Revista Latino-Americana de Educação em Astronomia, n. 38, p. 61-91, 2024.<br />
+                            • NEVES, I. dos S. (2007). <strong>Tapirapé: discurso fundador da identidade tupi</strong>. Revista do SETA, 1. ISSN 1981-9153.
+                          </p>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* 4. Nhandu – Ema */}
+                    {(fonteFilter === 'todas' || fonteFilter === 'nhandu') && (
+                      <div className="fonte-item-card" id="card-nhandu" style={{ borderLeftColor: '#34d399' }}>
+                        <div className="fonte-card-top">
+                          <div className="fonte-title-group">
+                            <span className="fonte-figure-icon">🦤</span>
+                            <div>
+                              <h4 className="fonte-figure-title">Nhandu – Ema</h4>
+                              <span className="fonte-region-badge" style={{ borderColor: 'rgba(52, 211, 153, 0.4)', color: '#34d399', background: 'rgba(52, 211, 153, 0.08)' }}>
+                                Entre Cruzeiro do Sul e Escorpião • Calendário Agrícola Natural
+                              </span>
+                            </div>
+                          </div>
+                          <button
+                            className="btn-pronounce-small"
+                            onClick={() => audioSystem.speak("Guyrá Nhandu... A Ema Celeste.")}
+                            title="Ouvir pronúncia"
+                          >
+                            🔊 Ouvir
+                          </button>
+                        </div>
+
+                        <p className="fonte-description-text">
+                          Para os povos Tupi-Guarani, a abóboda celeste funciona como um calendário agrícola natural. Um dos seus principais referenciais é a constelação da Ema (<em>Guyrá Nhandu</em>) localizada no trecho celeste situado entre o Cruzeiro do Sul e o Escorpião.
+                        </p>
+
+                        <div className="fonte-academic-citation">
+                          <div className="citation-header">
+                            <span>📖 Fonte:</span>
+                          </div>
+                          <p className="citation-text">
+                            FURTADO, Kenedy Daniel Calegari; PACHECO, Hualan Patrício; IGNA, Fernando Dall. <strong>Astronomia Cultural no Ensino Médio: Uma Sequência Didática para a abordagem das constelações celestes indígenas</strong>. Revista Latino-Americana de Educação em Astronomia, n. 38, p. 61-91, 2024.
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
               )}
 
               {activeTab === 'equivalencia' && (
