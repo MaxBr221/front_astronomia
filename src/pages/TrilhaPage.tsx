@@ -140,7 +140,7 @@ export const TrilhaPage: React.FC = () => {
 
                   <div className="node-preview-media">
                     <img
-                      src={item.imageUrl || (index === 0 ? '/assets/tuira_orion.jpg' : index === 1 ? '/assets/ema_celeste.jpg' : '/assets/antas_milkyway.jpg')}
+                      src={item.imageUrl || (index === 0 ? '/assets/tuira_orion.jpg' : index === 1 ? '/assets/ema_celeste.jpg' : index === 2 ? '/assets/antas_milkyway.jpg' : '/assets/veado_celeste.jpg')}
                       alt={item.title}
                       style={isLocked ? { filter: 'brightness(0.4) grayscale(0.5)' } : {}}
                     />
@@ -230,7 +230,7 @@ export const TrilhaPage: React.FC = () => {
               Dicionário Cósmico Tupi-Guarani
             </h3>
             <p style={{ color: '#cbd5e1', fontSize: '0.88rem', margin: 0 }}>
-              Consulte 22 termos ancestrais para estrelas, constelações (Tingasu, Tuiba’e), fases da lua e galáxias com áudio e pronúncia.
+              Consulte 22 termos ancestrais para estrelas, constelações (Tinguasú, Tuiba’e), fases da lua e galáxias com áudio e pronúncia.
             </p>
           </div>
         </div>

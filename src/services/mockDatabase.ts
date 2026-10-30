@@ -76,7 +76,7 @@ export const INITIAL_TRAIL_NODES: Record<string, NoTrilhaDTO> = {
     badges: [
       { icon: '🔒', text: 'Requer Nível 3' }
     ],
-    image: '/assets/starfield_bg.jpg',
+    image: '/assets/veado_celeste.jpg',
     starsEquiv: 'Escorpião e Sagitário'
   }
 };

@@ -79,7 +79,7 @@ export const MOCK_CONSTELLATIONS_LIST: ConstellationListItemDTO[] = [
     westernEquivalence: 'Escorpião e Sagitário',
     climateMarker: 'Tempo de renovação da flora e caçadas',
     stepsCount: 3,
-    imageUrl: '/assets/starfield_bg.jpg'
+    imageUrl: '/assets/veado_celeste.jpg'
   }
 ];
 
@@ -202,7 +202,7 @@ export const MOCK_EXERCISE_DATA: ExerciseDTO = {
       leftId: 'veado',
       leftLabel: 'O Veado Celeste (Guará Guasu)',
       leftNative: 'Guará Guasu',
-      leftIcon: '/assets/starfield_bg.jpg',
+      leftIcon: '/assets/veado_celeste.jpg',
       leftAudio: 'Guará Guasu',
       leftTooltip: 'O guardião das matas e dos períodos de estiagem e noites limpas.',
       rightId: 'primavera_renovacao',

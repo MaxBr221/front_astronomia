@@ -47,7 +47,7 @@ export const DICIONARIO_ASTRONOMICO: TermoDicionarioDTO[] = [
     categoria: 'estrelas',
     categoriaLabel: 'Estrelas Sagradas',
     icone: '🟠',
-    detalhe: 'Estrela gigante laranja avermelhada na região de Touro. Na tradição do Homem Velho (Tuiba\'e), sinaliza a perna decepada vertendo o orvalho e as chuvas da fertilidade.',
+    detalhe: 'Estrela gigante laranja avermelhada na região de Touro.',
     regiaoCeleste: 'Constelação de Touro / Tuiba\'e'
   },
   {
@@ -131,7 +131,7 @@ export const DICIONARIO_ASTRONOMICO: TermoDicionarioDTO[] = [
     categoria: 'constelacoes',
     categoriaLabel: 'Constelações & Figuras',
     icone: '✝️',
-    detalhe: 'Constelação do Cruzeiro do Sul. Na etnoastronomia indígena, suas estrelas demarcam a cabeça e bico da Ema Celeste (Guyrá Nhandu).',
+    detalhe: 'Uma das constelações mais famosas e fáceis de reconhecer no céu noturno do Hemisfério Sul.',
     regiaoCeleste: 'Hemisfério Sul Celeste'
   },
   {
@@ -165,9 +165,9 @@ export const DICIONARIO_ASTRONOMICO: TermoDicionarioDTO[] = [
     regiaoCeleste: 'Entre Cruzeiro do Sul e Escorpião'
   },
   {
-    id: 'tingasu',
-    tupi: 'Tingasu',
-    portugues: 'Constelação do Pássaro Tingasu',
+    id: 'tinguasu',
+    tupi: 'Tinguasú',
+    portugues: 'Constelação do Pássaro Tinguasú',
     categoria: 'constelacoes',
     categoriaLabel: 'Constelações & Figuras',
     icone: '🦅',
